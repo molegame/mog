@@ -46,6 +46,4 @@ Route::group([
     $router->resource('om/audit', OM\AuditController::class);
     $router->resource('om/products', OM\ProductsController::class);
     $router->resource('om/clientpatch', OM\ClientPatchController::class);
-    // 运营
-    $router->resource('op/retention', OP\RetentionController::class);
 });

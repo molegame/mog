@@ -465,6 +465,15 @@ class AdminTablesSeeder extends Seeder
                     "http_path" => "/scheduling*",
                     "created_at" => "2019-05-26 00:03:43",
                     "updated_at" => "2019-05-26 00:03:43"
+                ],
+                [
+                    "id" => 16,
+                    "name" => "Mail Approval",
+                    "slug" => "mail.approval",
+                    "http_method" => "",
+                    "http_path" => NULL,
+                    "created_at" => "2019-12-27 11:09:40",
+                    "updated_at" => "2019-12-27 11:09:40"
                 ]
             ]
         );

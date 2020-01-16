@@ -121,7 +121,8 @@ class ClientPatchController extends Controller
         ];
         
         $form->text('name', trans('game.info.name'))->rules('required|max:50');
-        $form->text('version', trans('game.info.version'))->rules(['required','regex:/^(([0-9]){1,}\.){1,2}([0-9]){1,3}$/']);
+        // $form->text('version', trans('game.info.version'))->rules(['required','regex:/^(([0-9]){1,}\.){1,2}([0-9]){1,3}$/']);
+        $form->text('version', trans('game.info.version'));
         $form->select('platform', trans('game.info.platform'))->options($platforms)->rules('required');
         $form->largefile('file', trans('game.info.file'))->rules('required');
         

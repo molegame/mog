@@ -37,7 +37,7 @@ class PatchServerJob implements ShouldQueue
     public function handle()
     {
         Log::debug(sprintf("Patch server {%s} from version {%s} to {%s} start", $this->zone, $this->tversion, $this->sversion));
-        $shell = sprintf("sudo salt '*' state.apply game.install-patch pillar='{\"zone\": \"%s\", \"sversion\": \"%s\", \"tversion\": \"%s\"}'", 
+        $shell = sprintf("sudo salt '*' state.apply game.install-patch pillar='{\"zone\": \"%s\", \"sversion\": \"%s\", \"tversion\": \"%s\"， \"env\": \"all\"}'", 
             $this->zone, $this->sversion, $this->tversion);
         exec($shell, $result, $status);
         Log::debug($result);

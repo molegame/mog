@@ -102,8 +102,17 @@ class AuditController extends Controller
         });
         // 列
         $grid->id('ID');
-        $grid->name(trans('game.info.title'));
-        $grid->column('packages','包名')->map('ucwords')->implode(',');
+        $grid->name(trans('game.info.title'))->style('width:80px');
+        // $grid->column('packages','包名')->style('width:10px')->map('ucwords')->implode(',');
+        $grid->column('packages', trans('game.info.package'))->map('ucwords')->implode(',')->display(function ($packages){
+            $packages_arry = explode(",", $packages);
+            $package = "";
+            foreach($packages_arry as $value){            
+                $package = $package. "" ."<span class='label label-warning'>{$value}</span> ";
+            }
+            return $package;
+
+        });
       
 
         return $grid;
@@ -123,10 +132,11 @@ class AuditController extends Controller
             $tools->disableView();
         });
         $form->disableCreatingCheck();
-        
+
         $form->display('id', 'ID');
         $form->text('name', trans('game.info.title'))->rules('required|max:128');
-        $form->text('packages', trans('game.info.package'))->rules(['nullable', 'regex:/^((\w){1,}\.*){1,}\@{0,1}\w{1,}((,((\w){1,}\.*){1,})\@{0,1}\w{1,}){0,}$/']);
+        // $form->textarea('packages', trans('game.info.package'))->rows(10)->rules(['nullable', 'regex:/^((\w){1,}\.*){1,}\@{0,1}\w{1,}((,((\w){1,}\.*){1,})\@{0,1}\w{1,}){0,}$/']);
+        $form->tags('packages');
 
         return $form;
     }
